@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">Meme Generator</h1>
+                <p class="app-subtitle">Create hilarious memes in seconds</p>
+            </div>
+        </header>
+        
+        <main class="app-main">
+            <div class="workspace">
+                <div class="left-panel" id="leftPanel">
+                    <div class="left-section">
+                        <div class="section-header">
+                            <h2>Templates</h2>
+                        </div>
+                        <div id="templatesGrid" class="templates-grid">
+                            <!-- Templates will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <div class="left-section">
+                        <div class="section-header">
+                            <h2>Upload Your Own Image</h2>
+                        </div>
+                        <label for="imageInput" class="upload-area">
+                            <input type="file" id="imageInput" accept="image/*">
+                            <div class="upload-content">
+                                <div class="upload-icon">☁</div>
+                                <div class="upload-text-large">Upload Your Own Image</div>
+                                <div class="upload-text-small">Click or drag and drop</div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="canvas-area">
+                        <div class="canvas-wrapper">
+                            <canvas id="memeCanvas"></canvas>
+                            <div id="canvasPlaceholder" class="canvas-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">🖼</div>
+                                    <p>Upload an image to get started</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resizer" id="resizer"></div>
+                
+                <aside class="right-panel" id="rightPanel">
+                    <div class="sidebar-section">
+                        <div class="section-header">
+                            <h2>Text Content</h2>
+                        </div>
+                        <textarea id="textInput" class="text-input" placeholder="Enter your meme text&#10;Press Enter for new lines" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <div class="section-header">
+                            <h2>Font Size</h2>
+                        </div>
+                        <div class="slider-wrapper">
+                            <input type="range" id="fontSizeInput" min="20" max="200" value="40" class="slider">
+                            <span id="fontSizeDisplay" class="slider-value">40</span>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <div class="section-header">
+                            <h2>Text Color</h2>
+                        </div>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="textColorInput" value="#FFFFFF" class="color-picker">
+                            <span class="color-value">#FFFFFF</span>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <button id="addTextBtn" class="add-button">
+                            <span>Add Text to Canvas</span>
+                        </button>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <div class="section-header">
+                            <h2>Text Boxes</h2>
+                            <span class="layer-count" id="layerCount">0</span>
+                        </div>
+                        <div id="textBoxesList" class="text-layers">
+                            <div class="empty-state">
+                                <p>No text layers yet</p>
+                                <span>Add text to get started</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <button id="downloadBtn" class="download-button">
+                            <span>Download Meme</span>
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
