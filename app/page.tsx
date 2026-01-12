@@ -263,16 +263,15 @@ export default function Home() {
       });
 
       // Create meme with links in a single transaction
-      // In Instant DB, links are set using the link label name with the ID
-      await db.transact(
+      // In Instant DB, links are set using .link() method
+      await db.transact([
         db.tx.memes[memeId].update({
           ...memeData,
-          // Links are set using the label name from schema
-          // memeAuthor link has label 'author', memeOwner link has label 'owner'
-          author: user.id,
-          owner: user.id,
-        })
-      );
+        }),
+        // Set links separately using .link()
+        db.tx.memes[memeId].link({ author: user.id }),
+        db.tx.memes[memeId].link({ owner: user.id }),
+      ]);
 
       console.log('Meme posted successfully!', memeId);
       // Clear caption after successful post
